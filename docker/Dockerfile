@@ -26,7 +26,7 @@ RUN conda create --name CenterNet python=3.6
 RUN conda init bash
 #RUN conda activate CenterNet
 RUN ls ~/anaconda3/
-RUN PYTORCH=/path/to/pytorch # usually ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
+RUN PYTORCH=~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
 RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
 
