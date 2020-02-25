@@ -9,6 +9,11 @@ WORKDIR /home/app/
 
 #RUN mkdir /app
 
+
+
+# Make RUN commands use `bash --login`:
+SHELL ["/bin/bash", "--login", "-c"]
+
 # Anaconda installing
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
