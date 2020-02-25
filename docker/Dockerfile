@@ -12,7 +12,7 @@ WORKDIR /home/app/
 
 
 # Make RUN commands use `bash --login`:
-SHELL ["/bin/bash", "--login", "-c"]
+#SHELL ["/bin/bash", "--login", "-c"]
 
 # Anaconda installing
 #RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
@@ -42,5 +42,5 @@ RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=Pyt
 #WORKDIR /tmp
 #RUN python load_pretrained.py
 #WORKDIR /app
-#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
 
