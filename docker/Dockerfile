@@ -2,6 +2,8 @@ FROM pytorch/pytorch:latest
 # install
 
 RUN apt-get update --fix-missing
+RUN apt install -y build-essential
+RUN apt-get install -y manpages-dev
 RUN apt-get install -y protobuf-compiler python-pil python-lxml git wget unzip screen vim libgtk2.0-dev
 
 #USER app
