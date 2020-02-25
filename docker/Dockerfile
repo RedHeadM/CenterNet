@@ -38,9 +38,9 @@ ENV CenterNet_ROOT /app
 RUN git clone https://github.com/xingyizhou/CenterNet /app
 RUN pip install -r /tmp/requirements.txt
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
-WORKDIR /app/src/lib/models/networks/DCNv2
-RUN ./make.sh
-WORKDIR APP
+#WORKDIR /app/src/lib/models/networks/DCNv2
+#RUN ./make.sh
+#WORKDIR APP
 
 
 #WORKDIR /tmp
