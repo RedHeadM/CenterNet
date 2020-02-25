@@ -20,7 +20,7 @@ ENV PATH /home/app/anaconda3/bin:$PATH
 RUN conda create --name CenterNet python=3.6
 RUN conda activate CenterNet
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
-sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
+RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
 
 #COPY ./requirements.txt /tmp/requirements.txt
 COPY . /tmp/
