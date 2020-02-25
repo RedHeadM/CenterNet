@@ -24,7 +24,7 @@ RUN conda update -n base -c defaults conda
 ENV PATH /home/app/anaconda3/bin:$PATH
 RUN conda create --name CenterNet python=3.6
 RUN conda init bash
-RUN conda activate CenterNet
+#RUN conda activate CenterNet
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
 RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
 
