@@ -15,19 +15,21 @@ WORKDIR /home/app/
 SHELL ["/bin/bash", "--login", "-c"]
 
 # Anaconda installing
-RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
-RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
-RUN conda update -n base -c defaults conda
+#RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
+#RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
+#RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
+#RUN conda update -n base -c defaults conda
 # Set path to conda
 #ENV PATH /root/anaconda3/bin:$PATH
-ENV PATH /home/app/anaconda3/bin:$PATH
-RUN conda create --name CenterNet python=3.6
-RUN conda init bash
+#ENV PATH /home/app/anaconda3/bin:$PATH
+#RUN conda create --name CenterNet python=3.6
+#RUN conda init bash
 #RUN conda activate CenterNet
-RUN ls ~/anaconda3/
+#RUN ls ~/anaconda3/
 ENV PYTORCH ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
-RUN conda install pytorch=0.4.1 torchvision -c pytorch
+RUN pip install  install pytorch==0.4.1 torchvision 
+RUN python -c "import torch; print(torch.__version__)"
+RUN python -c "import torch; import os; print(os.path.abspath(torch.__file__))"
 RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/torch/nn/functional.py
 
 COPY ./requirements.txt /tmp/requirements.txt
