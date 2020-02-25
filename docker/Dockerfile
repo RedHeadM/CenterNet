@@ -5,7 +5,7 @@ RUN apt-get update --fix-missing
 RUN apt-get install -y protobuf-compiler python-pil python-lxml git wget unzip screen vim libgtk2.0-dev
 
 #USER app
-WORKDIR /home/app/
+WORKDIR /app/
 
 #RUN mkdir /app
 
@@ -34,7 +34,7 @@ RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" /opt/conda/lib/python
 
 COPY ./requirements.txt /tmp/requirements.txt
 #COPY . /tmp/
-ENV CenterNet_ROOT /home/app
+ENV CenterNet_ROOT /app
 RUN pip install -r /tmp/requirements.txt
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 
