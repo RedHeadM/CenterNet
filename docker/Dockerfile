@@ -28,7 +28,7 @@ RUN conda init bash
 RUN ls ~/anaconda3/
 ENV PYTORCH ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
-RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
+RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/torch/nn/functional.py
 
 COPY ./requirements.txt /tmp/requirements.txt
 #COPY . /tmp/
