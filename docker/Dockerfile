@@ -22,15 +22,15 @@ RUN conda activate CenterNet
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
 RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ${PYTORCH}/torch/nn/functional.py
 
-#COPY ./requirements.txt /tmp/requirements.txt
-COPY . /tmp/
+COPY ./requirements.txt /tmp/requirements.txt
+#COPY . /tmp/
+ENV CenterNet_ROOT /home/app
 RUN pip install -r /tmp/requirements.txt
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
 
-ENV CenterNet_ROOT /app
 
 #WORKDIR /tmp
 #RUN python load_pretrained.py
-WORKDIR /app
+#WORKDIR /app
 #ENTRYPOINT ["/bin/bash"]
 
