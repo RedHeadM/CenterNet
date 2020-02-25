@@ -26,7 +26,7 @@ WORKDIR /app/
 #RUN conda init bash
 #RUN conda activate CenterNet
 #RUN ls ~/anaconda3/
-ENV PYTORCH ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
+#ENV PYTORCH ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
 RUN pip install torch==0.4.1 torchvision 
 RUN python -c "import torch; print(torch.__version__)"
 RUN python -c "import torch; import os; print(os.path.abspath(torch.__file__))"
@@ -35,8 +35,12 @@ RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" /opt/conda/lib/python
 COPY ./requirements.txt /tmp/requirements.txt
 #COPY . /tmp/
 ENV CenterNet_ROOT /app
+git clone https://github.com/xingyizhou/CenterNet /app
 RUN pip install -r /tmp/requirements.txt
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+WORKDIR /app/src/lib/models/networks/DCNv2
+RUN ./make.sh
+WORKDIR APP
 
 
 #WORKDIR /tmp
