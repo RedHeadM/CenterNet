@@ -4,7 +4,7 @@ FROM pytorch/pytorch:latest
 RUN apt-get update --fix-missing
 RUN apt-get install -y protobuf-compiler python-pil python-lxml git wget unzip screen vim libgtk2.0-dev
 
-USER app
+#USER app
 WORKDIR /home/app/
 
 #RUN mkdir /app
