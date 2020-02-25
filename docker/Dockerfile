@@ -30,7 +30,7 @@ ENV PYTORCH ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/
 RUN pip install torch==0.4.1 torchvision 
 RUN python -c "import torch; print(torch.__version__)"
 RUN python -c "import torch; import os; print(os.path.abspath(torch.__file__))"
-RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" ~/anaconda3/envs/CenterNet/lib/python3.6/site-packages/torch/nn/functional.py
+RUN sed -i "1254s/torch\.backends\.cudnn\.enabled/False/g" /opt/conda/lib/python3.7/site-packages/torch/nn/functional.py
 
 COPY ./requirements.txt /tmp/requirements.txt
 #COPY . /tmp/
