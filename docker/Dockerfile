@@ -14,9 +14,10 @@ RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
 RUN conda init bash
+RUN conda update -n base -c defaults conda
 # Set path to conda
 #ENV PATH /root/anaconda3/bin:$PATH
-ENV PATH /home/app/anaconda3/bin:$PATH
+#ENV PATH /home/app/anaconda3/bin:$PATH
 RUN conda create --name CenterNet python=3.6
 RUN conda activate CenterNet
 RUN conda install pytorch=0.4.1 torchvision -c pytorch
